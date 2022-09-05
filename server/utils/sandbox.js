@@ -3,6 +3,7 @@ const Safeify = require('safeify').default;
 module.exports = async function sandboxFn(context, script) {
     // 创建 safeify 实例
     const safeVm = new Safeify({
+        unrestricted: true,
         timeout: 3000,
         asyncTimeout: 60000
     })

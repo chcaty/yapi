@@ -1042,7 +1042,7 @@ class projectController extends baseController {
         token = sha('sha1')
           .update(passsalt)
           .digest('hex')
-          .substr(0, 20);
+          .substring(0, 20);
         result = await this.tokenModel.up(project_id, token);
         token = getToken(token);
         result.token = token;

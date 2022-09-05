@@ -14,9 +14,9 @@ function model(model, schema) {
 
 function connect(callback) {
   mongoose.Promise = global.Promise;
-  mongoose.set('useNewUrlParser', true);
-  mongoose.set('useFindAndModify', false);
-  mongoose.set('useCreateIndex', true);
+  // mongoose.set('useNewUrlParser', true);
+  // mongoose.set('useFindAndModify', false);
+  // mongoose.set('useCreateIndex', true);
 
   let config = yapi.WEBCONFIG;
   let options = {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true};
@@ -50,26 +50,26 @@ function connect(callback) {
 
   let db = mongoose.connect(
     connectString,
-    options,
     function(err) {
       if (err) {
+        yapi.commons.log(connectString)
         yapi.commons.log(err + ', mongodb Authentication failed', 'error');
       }
     }
   );
 
-  db.then(
-    function() {
-      yapi.commons.log('mongodb load success...');
+  // db.then(
+  //   function() {
+  //     yapi.commons.log('mongodb load success...');
 
-      if (typeof callback === 'function') {
-        callback.call(db);
-      }
-    },
-    function(err) {
-      yapi.commons.log(err + 'mongodb connect error', 'error');
-    }
-  );
+  //     if (typeof callback === 'function') {
+  //       callback.call(db);
+  //     }
+  //   },
+  //   function(err) {
+  //     yapi.commons.log(err + 'mongodb connect error', 'error');
+  //   }
+  // );
 
   autoIncrement.initialize(db);
   return db;
