@@ -12,7 +12,19 @@ import {
 import { fetchProjectList } from '../../../../reducer/modules/project';
 import axios from 'axios';
 import ImportInterface from './ImportInterface';
-import { Input, Icon, Button, Modal, message, Tooltip, Tree, Form } from 'antd';
+
+import {
+  CopyOutlined,
+  DeleteOutlined,
+  EditOutlined,
+  FolderOpenOutlined,
+  PlusOutlined,
+} from '@ant-design/icons';
+
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+
+import { Input, Button, Modal, message, Tooltip, Tree } from 'antd';
 import { arrayChangeIndex } from '../../../../common.js';
 import _ from 'underscore'
 
@@ -456,26 +468,22 @@ export default class InterfaceColMenu extends Component {
               <span className="casename">{interfaceCase.casename}</span>
               <div className="btns">
                 <Tooltip title="删除用例">
-                  <Icon
-                    type="delete"
+                  <DeleteOutlined
                     className="interface-delete-icon"
                     onClick={e => {
                       e.stopPropagation();
                       this.showDelCaseConfirm(interfaceCase._id);
                     }}
-                    style={{ display: this.state.delIcon == interfaceCase._id ? 'block' : 'none' }}
-                  />
+                    style={{ display: this.state.delIcon == interfaceCase._id ? 'block' : 'none' }} />
                 </Tooltip>
                 <Tooltip title="克隆用例">
-                  <Icon
-                    type="copy"
+                  <CopyOutlined
                     className="interface-delete-icon"
                     onClick={e => {
                       e.stopPropagation();
                       this.caseCopy(interfaceCase._id);
                     }}
-                    style={{ display: this.state.delIcon == interfaceCase._id ? 'block' : 'none' }}
-                  />
+                    style={{ display: this.state.delIcon == interfaceCase._id ? 'block' : 'none' }} />
                 </Tooltip>
               </div>
             </div>
@@ -548,49 +556,41 @@ export default class InterfaceColMenu extends Component {
                 title={
                   <div className="menu-title">
                     <span>
-                      <Icon type="folder-open" style={{ marginRight: 5 }} />
+                      <FolderOpenOutlined style={{ marginRight: 5 }} />
                       <span>{col.name}</span>
                     </span>
                     <div className="btns">
                       <Tooltip title="删除集合">
-                        <Icon
-                          type="delete"
+                        <DeleteOutlined
                           style={{ display: list.length > 1 ? '' : 'none' }}
                           className="interface-delete-icon"
                           onClick={() => {
                             this.showDelColConfirm(col._id);
-                          }}
-                        />
+                          }} />
                       </Tooltip>
                       <Tooltip title="编辑集合">
-                        <Icon
-                          type="edit"
+                        <EditOutlined
                           className="interface-delete-icon"
                           onClick={e => {
                             e.stopPropagation();
                             this.showColModal('edit', col);
-                          }}
-                        />
+                          }} />
                       </Tooltip>
                       <Tooltip title="导入接口">
-                        <Icon
-                          type="plus"
+                        <PlusOutlined
                           className="interface-delete-icon"
                           onClick={e => {
                             e.stopPropagation();
                             this.showImportInterfaceModal(col._id);
-                          }}
-                        />
+                          }} />
                       </Tooltip>
                       <Tooltip title="克隆集合">
-                        <Icon
-                          type="copy"
+                        <CopyOutlined
                           className="interface-delete-icon"
                           onClick={e => {
                             e.stopPropagation();
                             this.copyInterface(col);
-                          }}
-                        />
+                          }} />
                       </Tooltip>
                     </div>
                     {/*<Dropdown overlay={menu(col)} trigger={['click']} onClick={e => e.stopPropagation()}>

@@ -1,5 +1,7 @@
 import React, { PureComponent as Component } from 'react';
 import PropTypes from 'prop-types';
+import { EditOutlined, PlusOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
 import {
   Button,
   Input,
@@ -7,14 +9,13 @@ import {
   Modal,
   Select,
   Spin,
-  Icon,
   Collapse,
   Tooltip,
   Tabs,
   Switch,
   Row,
   Col,
-  Alert
+  Alert,
 } from 'antd';
 import constants from '../../constants/variable.js';
 import AceEditor from 'client/components/AceEditor/AceEditor';
@@ -659,7 +660,7 @@ export default class Run extends Component {
               onClick={this.reqRealInterface}
               type="primary"
               style={{ marginLeft: 10 }}
-              icon={loading ? 'loading' : ''}
+              icon={<LegacyIcon type={loading ? 'loading' : ''} />}
             >
               {loading ? '取消' : '发送'}
             </Button>
@@ -701,10 +702,7 @@ export default class Run extends Component {
                     placeholder="参数值"
                     id={`req_params_${index}`}
                     addonAfter={
-                      <Icon
-                        type="edit"
-                        onClick={() => this.showModal(item.value, index, 'req_params')}
-                      />
+                      <EditOutlined onClick={() => this.showModal(item.value, index, 'req_params')} />
                     }
                   />
                 </div>
@@ -713,7 +711,7 @@ export default class Run extends Component {
             <Button
               style={{ display: 'none' }}
               type="primary"
-              icon="plus"
+              icon={<PlusOutlined />}
               onClick={this.addPathParam}
             >
               添加Path参数
@@ -754,16 +752,13 @@ export default class Run extends Component {
                     placeholder="参数值"
                     id={`req_query_${index}`}
                     addonAfter={
-                      <Icon
-                        type="edit"
-                        onClick={() => this.showModal(item.value, index, 'req_query')}
-                      />
+                      <EditOutlined onClick={() => this.showModal(item.value, index, 'req_query')} />
                     }
                   />
                 </div>
               );
             })}
-            <Button style={{ display: 'none' }} type="primary" icon="plus" onClick={this.addQuery}>
+            <Button style={{ display: 'none' }} type="primary" icon={<PlusOutlined />} onClick={this.addQuery}>
               添加Query参数
             </Button>
           </Panel>
@@ -788,17 +783,14 @@ export default class Run extends Component {
                     id={`req_headers_${index}`}
                     addonAfter={
                       !item.abled && (
-                        <Icon
-                          type="edit"
-                          onClick={() => this.showModal(item.value, index, 'req_headers')}
-                        />
+                        <EditOutlined onClick={() => this.showModal(item.value, index, 'req_headers')} />
                       )
                     }
                   />
                 </div>
               );
             })}
-            <Button style={{ display: 'none' }} type="primary" icon="plus" onClick={this.addHeader}>
+            <Button style={{ display: 'none' }} type="primary" icon={<PlusOutlined />} onClick={this.addHeader}>
               添加Header
             </Button>
           </Panel>
@@ -828,7 +820,7 @@ export default class Run extends Component {
                   </Button>
                   <Tooltip title="高级参数设置只在json字段值中生效">
                     {'  '}
-                    <Icon type="question-circle-o" />
+                    <QuestionCircleOutlined />
                   </Tooltip>
                 </div>
               )}
@@ -888,10 +880,7 @@ export default class Run extends Component {
                             placeholder="参数值"
                             id={`req_body_form_${index}`}
                             addonAfter={
-                              <Icon
-                                type="edit"
-                                onClick={() => this.showModal(item.value, index, 'req_body_form')}
-                              />
+                              <EditOutlined onClick={() => this.showModal(item.value, index, 'req_body_form')} />
                             }
                           />
                         )}
@@ -901,7 +890,7 @@ export default class Run extends Component {
                   <Button
                     style={{ display: 'none' }}
                     type="primary"
-                    icon="plus"
+                    icon={<PlusOutlined />}
                     onClick={this.addBody}
                   >
                     添加Form参数
@@ -942,7 +931,7 @@ export default class Run extends Component {
                     <span>
                       Warning &nbsp;
                       <Tooltip title="针对定义为 json schema 的返回数据进行格式校验">
-                        <Icon type="question-circle-o" />
+                        <QuestionCircleOutlined />
                       </Tooltip>
                     </span>
                   }

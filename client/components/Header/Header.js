@@ -3,7 +3,17 @@ import React, { PureComponent as Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Icon, Layout, Menu, Dropdown, message, Tooltip, Popover, Tag } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+
+import {
+  DownOutlined,
+  LogoutOutlined,
+  PlusCircleOutlined,
+  QuestionCircleOutlined,
+  StarOutlined,
+} from '@ant-design/icons';
+
+import { Layout, Menu, Dropdown, message, Tooltip, Popover, Tag } from 'antd';
 import { checkLoginState, logoutActions, loginTypeAction } from '../../reducer/modules/user';
 import { changeMenuItem } from '../../reducer/modules/menu';
 import { withRouter } from 'react-router';
@@ -43,12 +53,12 @@ const MenuUser = props => (
         <Menu.Item key={key}>
           {item.name === '个人中心' ? (
             <Link to={item.path + `/${props.uid}`}>
-              <Icon type={item.icon} />
+              <LegacyIcon type={item.icon} />
               {item.name}
             </Link>
           ) : (
             <Link to={item.path}>
-              <Icon type={item.icon} />
+              <LegacyIcon type={item.icon} />
               {item.name}
             </Link>
           )}
@@ -57,7 +67,7 @@ const MenuUser = props => (
     })}
     <Menu.Item key="9">
       <a onClick={props.logout}>
-        <Icon type="logout" />退出
+        <LogoutOutlined />退出
       </a>
     </Menu.Item>
   </Menu>
@@ -66,7 +76,7 @@ const MenuUser = props => (
 const tipFollow = (
   <div className="title-container">
     <h3 className="title">
-      <Icon type="star" /> 关注
+      <StarOutlined /> 关注
     </h3>
     <p>这里是你的专属收藏夹，便于你找到自己的项目</p>
   </div>
@@ -74,7 +84,7 @@ const tipFollow = (
 const tipAdd = (
   <div className="title-container">
     <h3 className="title">
-      <Icon type="plus-circle" /> 新建项目
+      <PlusCircleOutlined /> 新建项目
     </h3>
     <p>在任何页面都可以快速新建项目</p>
   </div>
@@ -121,7 +131,7 @@ const ToolUser = props => {
         <Tooltip placement="bottom" title={'我的关注'}>
           <li className="toolbar-li">
             <Link to="/follow">
-              <Icon className="dropdown-link" style={{ fontSize: 16 }} type="star" />
+              <StarOutlined className="dropdown-link" style={{ fontSize: 16 }} />
             </Link>
           </li>
         </Tooltip>
@@ -137,7 +147,7 @@ const ToolUser = props => {
         <Tooltip placement="bottom" title={'新建项目'}>
           <li className="toolbar-li">
             <Link to="/add-project">
-              <Icon className="dropdown-link" style={{ fontSize: 16 }} type="plus-circle" />
+              <PlusCircleOutlined className="dropdown-link" style={{ fontSize: 16 }} />
             </Link>
           </li>
         </Tooltip>
@@ -153,7 +163,7 @@ const ToolUser = props => {
         <Tooltip placement="bottom" title={'使用文档'}>
           <li className="toolbar-li">
             <a target="_blank" href="https://hellosean1025.github.io/yapi" rel="noopener noreferrer">
-              <Icon className="dropdown-link" style={{ fontSize: 16 }} type="question-circle" />
+              <QuestionCircleOutlined className="dropdown-link" style={{ fontSize: 16 }} />
             </a>
           </li>
         </Tooltip>
@@ -179,7 +189,7 @@ const ToolUser = props => {
             </span>
             {/*props.imageUrl? <Avatar src={props.imageUrl} />: <Avatar src={`/api/user/avatar?uid=${props.uid}`} />*/}
             <span className="name">
-              <Icon type="down" />
+              <DownOutlined />
             </span>
           </a>
         </Dropdown>

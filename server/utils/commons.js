@@ -578,6 +578,7 @@ ${JSON.stringify(schema, null, 2)}`)
       if (globalScript) {
         logs.push('执行脚本：' + globalScript)
         result = await sandboxFn(context, globalScript);
+        //result = yapi.commons.sandbox(context, globalScript)
       }
     }
 
@@ -587,6 +588,7 @@ ${JSON.stringify(schema, null, 2)}`)
     if (script) {
       logs.push('执行脚本:' + script)
       result = await sandboxFn(context, script);
+      //result = yapi.commons.sandbox(context, script)
     }
     result.logs = logs;
     return yapi.commons.resReturn(result);

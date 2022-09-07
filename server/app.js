@@ -43,16 +43,16 @@ app.use(async (ctx, next) => {
   }
 });
 
-app.use(async (ctx, next) => {
-  if (ctx.path.indexOf('/prd') === 0) {
-    ctx.set('Cache-Control', 'max-age=8640000000');
-    if (yapi.commons.fileExist(yapi.path.join(yapi.WEBROOT, 'static', ctx.path + '.gz'))) {
-      ctx.set('Content-Encoding', 'gzip');
-      ctx.path = ctx.path + '.gz';
-    }
-  }
-  await next();
-});
+// app.use(async (ctx, next) => {
+//   if (ctx.path.indexOf('/prd') === 0) {
+//     ctx.set('Cache-Control', 'max-age=8640000000');
+//     if (yapi.commons.fileExist(yapi.path.join(yapi.WEBROOT, 'static', ctx.path + '.gz'))) {
+//       ctx.set('Content-Encoding', 'gzip');
+//       ctx.path = ctx.path + '.gz';
+//     }
+//   }
+//   await next();
+// });
 
 
 app.use(koaStatic(yapi.path.join(yapi.WEBROOT, 'static'), { index: indexFile, gzip: true }));

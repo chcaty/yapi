@@ -1,7 +1,8 @@
 import React, { PureComponent as Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Icon, Input, AutoComplete } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+import { Input, AutoComplete } from 'antd';
 import './Search.scss';
 import { withRouter } from 'react-router';
 import axios from 'axios';
@@ -147,7 +148,7 @@ export default class Srch extends Component {
           // }
         >
           <Input
-            prefix={<Icon type="search" className="srch-icon" />}
+            prefix={<SearchOutlined className="srch-icon" />}
             placeholder="搜索分组/项目/接口"
             className="search-input"
           />

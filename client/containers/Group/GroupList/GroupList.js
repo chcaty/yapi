@@ -1,7 +1,8 @@
 import React, { PureComponent as Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Icon, Modal, Input, message,Spin,  Row, Menu, Col, Popover, Tooltip } from 'antd';
+import { FolderAddOutlined, FolderOpenOutlined, UserOutlined } from '@ant-design/icons';
+import { Modal, Input, message, Spin, Row, Menu, Col, Popover, Tooltip } from 'antd';
 import { autobind } from 'core-decorators';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
@@ -218,7 +219,7 @@ export default class GroupList extends Component {
               <span className="name">{currGroup.group_name}</span>
               <Tooltip title="添加分组">
                 <a className="editSet">
-                  <Icon className="btn" type="folder-add" onClick={this.showModal} />
+                  <FolderAddOutlined className="btn" onClick={this.showModal} />
                 </a>
               </Tooltip>
             
@@ -254,7 +255,7 @@ export default class GroupList extends Component {
                     className="group-item"
                     style={{ zIndex: this.props.studyTip === 0 ? 3 : 1 }}
                   >
-                    <Icon type="user" />
+                    <UserOutlined />
                     <Popover
                       overlayClassName="popover-index"
                       content={<GuideBtns />}
@@ -269,7 +270,7 @@ export default class GroupList extends Component {
               } else {
                 return (
                   <Menu.Item key={`${group._id}`} className="group-item">
-                    <Icon type="folder-open" />
+                    <FolderOpenOutlined />
                     {group.group_name}
                   </Menu.Item>
                 );

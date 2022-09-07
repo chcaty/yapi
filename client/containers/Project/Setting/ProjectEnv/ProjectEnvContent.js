@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './index.scss';
-import { Icon, Row, Col, Form, Input, Select, Button, AutoComplete, Tooltip } from 'antd';
+import { DeleteOutlined, QuestionCircleOutlined, SaveOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Row, Col, Input, Select, Button, AutoComplete, Tooltip } from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
 import constants from 'client/constants/variable.js';
@@ -198,14 +201,12 @@ class ProjectEnvContent extends Component {
           </Col>
           <Col span={2} className={index === headerLength ? ' env-last-row' : null}>
             {/* 新增的项中，只有最后一项没有有删除按钮 */}
-            <Icon
+            <DeleteOutlined
               className="dynamic-delete-button delete"
-              type="delete"
               onClick={e => {
                 e.stopPropagation();
                 this.delHeader(index, 'header');
-              }}
-            />
+              }} />
           </Col>
         </Row>
       );
@@ -239,14 +240,12 @@ class ProjectEnvContent extends Component {
           </Col>
           <Col span={2} className={index === length ? ' env-last-row' : null}>
             {/* 新增的项中，只有最后一项没有有删除按钮 */}
-            <Icon
+            <DeleteOutlined
               className="dynamic-delete-button delete"
-              type="delete"
               onClick={e => {
                 e.stopPropagation();
                 this.delHeader(index, name);
-              }}
-            />
+              }} />
           </Col>
         </Row>
       );
@@ -350,7 +349,7 @@ class ProjectEnvContent extends Component {
               style={{ marginLeft: 8 }}
             >
               <Tooltip title="点击查看文档">
-                <Icon type="question-circle-o" style={{fontSize: '13px'}}/>
+                <QuestionCircleOutlined style={{fontSize: '13px'}} />
               </Tooltip>
             </a>
           </h3>
@@ -367,7 +366,7 @@ class ProjectEnvContent extends Component {
         <div className="btnwrap-changeproject">
           <Button
             className="m-btn btn-save"
-            icon="save"
+            icon={<SaveOutlined />}
             type="primary"
             size="large"
             onClick={this.handleOk}

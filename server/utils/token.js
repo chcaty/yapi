@@ -5,10 +5,11 @@ const crypto = require('crypto');
 /*
  下面是使用加密算法
 */
-
+const iv = Buffer.from("", "");
 // 创建加密算法
 const aseEncode = function(data, password) {
-
+  console.log("encode:"+data)
+  console.log("encode:"+password)
   // 如下方法使用指定的算法与密码来创建cipher对象
   const cipher = crypto.createCipher('aes192', password);
 
@@ -22,6 +23,8 @@ const aseEncode = function(data, password) {
 
 // 创建解密算法
 const aseDecode = function(data, password) {
+  console.log("decode:"+data)
+  console.log("decode:"+password)
   /* 
    该方法使用指定的算法与密码来创建 decipher对象, 第一个算法必须与加密数据时所使用的算法保持一致;
    第二个参数用于指定解密时所使用的密码，其参数值为一个二进制格式的字符串或一个Buffer对象，该密码同样必须与加密该数据时所使用的密码保持一致
