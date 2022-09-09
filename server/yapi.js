@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const nodemailer = require('nodemailer');
-const config = require('../config/config.json');
+const config = require('../configs/config.json');
 
 let insts = new Map();
 let mail;
